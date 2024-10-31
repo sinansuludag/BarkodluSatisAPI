@@ -1,3 +1,8 @@
+using BarkodluSatis.BLL;
+using BarkodluSatis.DLL;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,16 +12,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-#region DB iþlemleri
 
-//builder.Services.AddDbContext<>(x =>
-//{
-//    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
-//    {
-//        option.MigrationsAssembly(Assembly.GetAssembly(typeof(MentorEducationDB)).GetName().Name);
-//    });
-//});
-#endregion
+
+builder.Services.AddDbContext<BarkodContextDB>(options =>
+{
+   options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection"), option =>
+    {
+        option.MigrationsAssembly(Assembly.GetAssembly(typeof(Assembler)).GetName().Name);
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

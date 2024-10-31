@@ -23,7 +23,9 @@ namespace BarkodluSatis.BLL
         }
 
 
-        public DbSet<Barkod> Barkod { get; set; }
+        public DbSet<Barkod> Barkods { get; set; }
+        public DbSet<HizliUrun> HizliUruns { get; set; }
+
 
 
 
