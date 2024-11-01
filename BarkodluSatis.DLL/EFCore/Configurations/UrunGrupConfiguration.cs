@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarkodluSatis.BLL.Configurations
+namespace BarkodluSatis.BLL.EFCore.Configurations
 {
-    public class TeraziConfiguration : IEntityTypeConfiguration<Terazi>
+    public class UrunGrupConfiguration : IEntityTypeConfiguration<UrunGrup>
     {
-        public void Configure(EntityTypeBuilder<Terazi> builder)
+        public void Configure(EntityTypeBuilder<UrunGrup> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.TeraziOnEk).IsRequired();
+            builder.Property(x => x.UrunGrupAd).IsRequired().HasMaxLength(100);
         }
     }
 }

@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarkodluSatis.BLL.Configurations
+namespace BarkodluSatis.BLL.EFCore.Configurations
 {
     public class IslemConfiguration : IEntityTypeConfiguration<Islem>
     {
         public void Configure(EntityTypeBuilder<Islem> builder)
         {
-            builder.HasKey(k=>k.Id);
-            builder.Property(k=>k.Id).UseIdentityColumn();
+            builder.HasKey(k => k.Id);
+            builder.Property(k => k.Id).UseIdentityColumn();
             builder.Property(k => k.IslemNo).IsRequired();
         }
     }

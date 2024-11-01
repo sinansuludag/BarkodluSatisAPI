@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarkodluSatis.BLL
+namespace BarkodluSatis.BLL.EFCore
 {
     public class BarkodContextDB : DbContext
     {

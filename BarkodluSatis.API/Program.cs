@@ -1,5 +1,5 @@
-using BarkodluSatis.BLL;
-using BarkodluSatis.DLL;
+using BarkodluSatis.API;
+using BarkodluSatis.BLL.EFCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

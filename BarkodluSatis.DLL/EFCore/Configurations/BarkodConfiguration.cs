@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarkodluSatis.BLL.Configurations
+namespace BarkodluSatis.BLL.EFCore.Configurations
 {
     public class BarkodConfiguration : IEntityTypeConfiguration<Barkod>
     {
         public void Configure(EntityTypeBuilder<Barkod> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(k=>k.Id).UseIdentityColumn();
-            builder.Property(k=>k.BarkodNo).IsRequired().HasMaxLength(50);
-           
+            builder.Property(k => k.Id).UseIdentityColumn();
+            builder.Property(k => k.BarkodNo).IsRequired().HasMaxLength(50);
+
         }
     }
 }

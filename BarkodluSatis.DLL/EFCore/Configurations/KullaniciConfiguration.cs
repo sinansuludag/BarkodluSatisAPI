@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BarkodluSatis.BLL.Configurations
+namespace BarkodluSatis.BLL.EFCore.Configurations
 {
     public class KullaniciConfiguration : IEntityTypeConfiguration<Kullanici>
     {
         public void Configure(EntityTypeBuilder<Kullanici> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x=>x.Id).UseIdentityColumn();
+            builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.AdSoyad).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Telefon).IsRequired();
-            builder.Property(x=>x.Eposta).IsRequired();
-            builder.Property(x=>x.KullaniciAd).IsRequired();
+            builder.Property(x => x.Eposta).IsRequired();
+            builder.Property(x => x.KullaniciAd).IsRequired();
             builder.Property(x => x.Sifre).IsRequired();
         }
     }
