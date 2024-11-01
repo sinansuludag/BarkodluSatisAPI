@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace BarkodluSatis.BLL.Configurations
 {
-    public class HizliUrunConfiguration : IEntityTypeConfiguration<HizliUrun>
+    public class UrunGrupConfiguration : IEntityTypeConfiguration<UrunGrup>
     {
-        public void Configure(EntityTypeBuilder<HizliUrun> builder)
+        public void Configure(EntityTypeBuilder<UrunGrup> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(k=>k.Id).UseIdentityColumn();
-            builder.Property(k => k.Barkod).IsRequired().HasMaxLength(50);
-            builder.Property(k => k.UrunAd).IsRequired().HasMaxLength(150);
+            builder.Property(x=>x.Id).UseIdentityColumn();
+            builder.Property(x => x.UrunGrupAd).IsRequired().HasMaxLength(100);
         }
     }
 }

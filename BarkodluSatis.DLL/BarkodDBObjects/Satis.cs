@@ -18,7 +18,7 @@ namespace BarkodluSatis.DLL.BarkodDBObjects
         public double SatisFiyat { get; set; }
         public double Miktar { get; set; }
         public double Toplam { get; set; }
-        public double KdvTutari { get; set; }
+        public double KdvTutari { get; set; } 
         public string OdemeSekli { get; set; }
         public bool Iade { get; set; }
         public DateTime Tarih { get; set; }
