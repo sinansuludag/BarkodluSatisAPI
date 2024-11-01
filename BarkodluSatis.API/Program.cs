@@ -1,4 +1,5 @@
 using BarkodluSatis.API;
+using BarkodluSatis.API.Extensions;
 using BarkodluSatis.BLL.EFCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -21,6 +22,9 @@ builder.Services.AddDbContext<BarkodContextDB>(options =>
         option.MigrationsAssembly(Assembly.GetAssembly(typeof(Assembler)).GetName().Name);
     });
 });
+
+builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
 
 var app = builder.Build();
 

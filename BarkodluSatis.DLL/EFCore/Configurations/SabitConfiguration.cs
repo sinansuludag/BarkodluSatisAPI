@@ -15,7 +15,7 @@ namespace BarkodluSatis.BLL.EFCore.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.AdSoyad).IsRequired().HasMaxLength(75);
+            builder.Property(x => x.AdSoyad).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Unvan).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Eposta).IsRequired();
             builder.Property(x => x.Telefon).IsRequired();

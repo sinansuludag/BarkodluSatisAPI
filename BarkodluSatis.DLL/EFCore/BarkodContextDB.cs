@@ -23,8 +23,18 @@ namespace BarkodluSatis.BLL.EFCore
         }
 
 
-        public DbSet<Barkod> Barkods { get; set; }
-        public DbSet<HizliUrun> HizliUruns { get; set; }
+        public DbSet<Barkod> Barkod { get; set; }
+        public DbSet<HizliUrun> HizliUrun { get; set; }
+        public DbSet<Islem> Islem { get; set; }
+        public DbSet<IslemOzet> IslemOzet { get; set; }
+        public DbSet<Kullanici> Kullanici { get; set; }
+        public DbSet<Sabit> Sabit { get; set; }
+        public DbSet<Urun> Urun { get; set; }
+        public DbSet<StokHareket> StokHareket { get; set; }
+        public DbSet<Terazi> Terazi { get; set; }
+        public DbSet<UrunGrup> UrunGrup { get; set; }
+
+
 
 
 

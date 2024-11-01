@@ -20,7 +20,7 @@ namespace BarkodluSatis.BLL.EFCore.Configurations
             builder.Property(x => x.OdemeSekli).IsRequired();
             builder.Property(x => x.AlisFiyatToplam).IsRequired();
             builder.Property(x => x.Tarih).IsRequired();
-            builder.Property(x => x.Kullanici).IsRequired().HasMaxLength(75);
+            builder.Property(x => x.Kullanici).IsRequired().HasMaxLength(100);
 
         }
     }
