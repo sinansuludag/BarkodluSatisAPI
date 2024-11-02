@@ -9,11 +9,11 @@ namespace BarkodluSatis.BLL.Contracts
 {
     public interface IBarkodService
     {
-        IEnumerable<Barkod> GetAllBarkods();
-        Barkod GetOneBarkodById(int id);
-        Barkod AddOneBarkod(Barkod barkod);
-        void DeleteOneBarkod(int id);
-        void UpdateOneBarkod(int id, Barkod barkod);
+        Task<IEnumerable<Barkod>> GetAllBarkodAsync();
+        Task<Barkod> GetOneBarkodByIdAsync(int id);
+        Task<Barkod> AddOneBarkodAsync(Barkod barkod);
+        Task DeleteOneBarkodAsync(int id);
+        Task UpdateOneBarkodAsync(int id, Barkod barkod);
 
     }
 }

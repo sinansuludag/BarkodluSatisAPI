@@ -17,11 +17,11 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllBarkods()
+        public async Task<IActionResult> GetAllBarkodAsync()
         {
             try
             {
-               var barkods=_serviceManager.BarkodService.GetAllBarkods();
+               var barkods=await _serviceManager.BarkodService.GetAllBarkodAsync();
                 return Ok(barkods);
             }
             catch (Exception ex)
@@ -31,13 +31,13 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddOneBarkod([FromBody] Barkod barkod)
+        public async Task<IActionResult> AddOneBarkodAsync([FromBody] Barkod barkod)
         {
             try
             {
                 if (barkod is null)
                     return BadRequest();//400
-                _serviceManager.BarkodService.AddOneBarkod(barkod);
+                await _serviceManager.BarkodService.AddOneBarkodAsync(barkod);
                 return StatusCode(201, barkod);
             }
             catch (Exception ex)
@@ -48,13 +48,13 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult UpdateOneBarkod([FromRoute(Name ="id")] int id, [FromBody] Barkod barkod)
+        public async Task<IActionResult> UpdateOneBarkod([FromRoute(Name ="id")] int id, [FromBody] Barkod barkod)
         {
             try
             {
                 if (barkod is null)
                     return BadRequest();//400
-                _serviceManager.BarkodService.UpdateOneBarkod(id,barkod);
+               await _serviceManager.BarkodService.UpdateOneBarkodAsync(id,barkod);
                 return NoContent(); //204
             }
             catch (Exception ex)
@@ -64,11 +64,11 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult DeleteOneBarkod([FromRoute(Name ="id")] int id)
+        public async Task<IActionResult> DeleteOneBarkod([FromRoute(Name ="id")] int id)
         {
             try
             {
-                _serviceManager.BarkodService.DeleteOneBarkod(id);
+               await _serviceManager.BarkodService.DeleteOneBarkodAsync(id);
                 return NoContent(); //204
             }
             catch (Exception ex)

@@ -18,39 +18,39 @@ namespace BarkodluSatis.BLL
             _repositoryManager = repositoryManager;
         }
 
-        public Barkod AddOneBarkod(Barkod barkod)
+        public async Task<Barkod> AddOneBarkodAsync(Barkod barkod)
         {
             if(barkod is null)
                 throw new ArgumentNullException(nameof(barkod));
 
-           _repositoryManager.Barkod.Add(barkod);
-            _repositoryManager.Save();
+           _repositoryManager.Barkod.AddAsync(barkod);
+           await _repositoryManager.SaveAsync();
             return barkod; 
         }
 
-        public void DeleteOneBarkod(int id)
+        public async Task DeleteOneBarkodAsync(int id)
         {
-            var entity=_repositoryManager.Barkod.GetById(id);
+            var entity=await _repositoryManager.Barkod.GetByIdAsync(id);
             if (entity is null)
                 throw new Exception($"Barkod with id:{id} could not found.");
-            _repositoryManager.Barkod.Delete(entity);
-            _repositoryManager.Save();
+            _repositoryManager.Barkod.DeleteAsync(entity);
+            await _repositoryManager.SaveAsync();
 
         }
 
-        public IEnumerable<Barkod> GetAllBarkods()
+        public async Task<IEnumerable<Barkod>> GetAllBarkodAsync()
         {
-            return _repositoryManager.Barkod.GetAll();
+            return await _repositoryManager.Barkod.GetAllAsync();
         }
 
-        public Barkod GetOneBarkodById(int id)
+        public async Task<Barkod> GetOneBarkodByIdAsync(int id)
         {
-            return _repositoryManager.Barkod.GetById(id);
+            return await _repositoryManager.Barkod.GetByIdAsync(id);
         }
 
-        public void UpdateOneBarkod(int id, Barkod barkod)
+        public async Task UpdateOneBarkodAsync(int id, Barkod barkod)
         {
-            var entity = _repositoryManager.Barkod.GetById(id);
+            var entity =await _repositoryManager.Barkod.GetByIdAsync(id);
             if (entity is null)
                 throw new Exception($"Barkod with id:{id} could not found.");
 
@@ -59,8 +59,8 @@ namespace BarkodluSatis.BLL
 
             entity.BarkodNo = barkod.BarkodNo;
 
-            _repositoryManager.Barkod.Update(entity);
-            _repositoryManager.Save();
+            _repositoryManager.Barkod.UpdateAsync(entity);
+            await _repositoryManager.SaveAsync();
         }
     }
 }
