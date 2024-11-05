@@ -8,6 +8,7 @@ namespace BarkodluSatis.BLL.Contracts
 {
     public interface IServiceManager
     {
-        IBarkodService BarkodService { get; }   
+        IBarkodService BarkodService { get; }  
+        IHizliUrunService HizliUrunService { get; }
     }
 }

@@ -9,6 +9,7 @@ namespace BarkodluSatis.DLL.Contracts
     public interface IRepositoryManager
     {
         IBarkodRepository Barkod { get;}
+        IHizliUrunRepository HizliUrun { get;}
         Task SaveAsync();
     }
 }

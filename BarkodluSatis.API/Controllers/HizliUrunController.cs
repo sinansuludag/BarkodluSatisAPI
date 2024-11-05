@@ -7,22 +7,22 @@ namespace BarkodluSatis.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BarkodController : ControllerBase
+    public class HizliUrunController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
 
-        public BarkodController(IServiceManager serviceManager)
+        public HizliUrunController(IServiceManager serviceManager)
         {
             _serviceManager = serviceManager;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllBarkodAsync()
+        public async Task<IActionResult> GetAllHizliUrunAsync()
         {
             try
             {
-               var barkods=await _serviceManager.BarkodService.GetAllBarkodAsync();
-                return Ok(barkods);
+                var hizliUruns = await _serviceManager.HizliUrunService.GetAllHizliUrunAsync();
+                return Ok(hizliUruns);
             }
             catch (Exception ex)
             {
@@ -31,27 +31,27 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetOneBarkodAsync([FromRoute(Name = "id")] int id)
+        public async Task<IActionResult> GetOneHizliUrunAsync([FromRoute(Name = "id")] int id)
         {
 
-            var barkod = await _serviceManager
-            .BarkodService
-            .GetOneBarkodByIdAsync(id);
-            if (barkod is null)
+            var hizliUrun = await _serviceManager
+            .HizliUrunService
+            .GetOneHizliUrunByIdAsync(id);
+            if (hizliUrun is null)
                 return NotFound();
 
-            return Ok(barkod);
+            return Ok(hizliUrun);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddOneBarkodAsync([FromBody] Barkod barkod)
+        public async Task<IActionResult> AddOneHizliUrunAsync([FromBody] HizliUrun hizliUrun)
         {
             try
             {
-                if (barkod is null)
+                if (hizliUrun is null)
                     return BadRequest();//400
-                await _serviceManager.BarkodService.AddOneBarkodAsync(barkod);
-                return StatusCode(201, barkod);
+                await _serviceManager.HizliUrunService.AddOneHizliUrunAsync(hizliUrun);
+                return StatusCode(201, hizliUrun);
             }
             catch (Exception ex)
             {
@@ -61,13 +61,13 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateOneBarkod([FromRoute(Name ="id")] int id, [FromBody] Barkod barkod)
+        public async Task<IActionResult> UpdateOneHizliUrun([FromRoute(Name = "id")] int id, [FromBody] HizliUrun hizliUrun)
         {
             try
             {
-                if (barkod is null)
+                if (hizliUrun is null)
                     return BadRequest();//400
-               await _serviceManager.BarkodService.UpdateOneBarkodAsync(id,barkod);
+                await _serviceManager.HizliUrunService.UpdateOneHizliUrunAsync(id, hizliUrun);
                 return NoContent(); //204
             }
             catch (Exception ex)
@@ -77,11 +77,11 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteOneBarkod([FromRoute(Name ="id")] int id)
+        public async Task<IActionResult> DeleteOneHizliUrun([FromRoute(Name = "id")] int id)
         {
             try
             {
-               await _serviceManager.BarkodService.DeleteOneBarkodAsync(id);
+                await _serviceManager.HizliUrunService.DeleteOneHizliUrunAsync(id);
                 return NoContent(); //204
             }
             catch (Exception ex)
