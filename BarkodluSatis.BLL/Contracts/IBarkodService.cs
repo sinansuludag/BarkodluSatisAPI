@@ -13,7 +13,7 @@ namespace BarkodluSatis.BLL.Contracts
         Task<Barkod> GetOneBarkodByIdAsync(int id);
         Task<Barkod> AddOneBarkodAsync(Barkod barkod);
         Task DeleteOneBarkodAsync(int id);
-        Task UpdateOneBarkodAsync(int id, Barkod barkod);
+        Task<Barkod> UpdateOneBarkodAsync(int id, Barkod barkod);
 
     }
 }

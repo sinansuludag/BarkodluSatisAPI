@@ -13,6 +13,6 @@ namespace BarkodluSatis.BLL.Contracts
         Task<HizliUrun> GetOneHizliUrunByIdAsync(int id);
         Task<HizliUrun> AddOneHizliUrunAsync(HizliUrun hizliUrun);
         Task DeleteOneHizliUrunAsync(int id);
-        Task UpdateOneHizliUrunAsync(int id, HizliUrun hizliUrun);
+        Task<HizliUrun> UpdateOneHizliUrunAsync(int id, HizliUrun hizliUrun);
     }
 }

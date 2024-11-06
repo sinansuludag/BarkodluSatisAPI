@@ -23,7 +23,7 @@ namespace BarkodluSatis.BLL
             if(barkod is null)
                 throw new ArgumentNullException(nameof(barkod));
 
-           _repositoryManager.Barkod.AddAsync(barkod);
+            await _repositoryManager.Barkod.AddAsync(barkod);
            await _repositoryManager.SaveAsync();
             return barkod; 
         }
@@ -33,7 +33,7 @@ namespace BarkodluSatis.BLL
             var entity=await _repositoryManager.Barkod.GetByIdAsync(id);
             if (entity is null)
                 throw new Exception($"Barkod with id:{id} could not found.");
-            _repositoryManager.Barkod.DeleteAsync(entity);
+            await _repositoryManager.Barkod.DeleteAsync(entity);
             await _repositoryManager.SaveAsync();
 
         }
@@ -48,7 +48,7 @@ namespace BarkodluSatis.BLL
             return await _repositoryManager.Barkod.GetByIdAsync(id);
         }
 
-        public async Task UpdateOneBarkodAsync(int id, Barkod barkod)
+        public async Task<Barkod> UpdateOneBarkodAsync(int id, Barkod barkod)
         {
             var entity =await _repositoryManager.Barkod.GetByIdAsync(id);
             if (entity is null)
@@ -59,8 +59,9 @@ namespace BarkodluSatis.BLL
 
             entity.BarkodNo = barkod.BarkodNo;
 
-            _repositoryManager.Barkod.UpdateAsync(entity);
+            await _repositoryManager.Barkod.UpdateAsync(entity);
             await _repositoryManager.SaveAsync();
+            return entity;
         }
     }
 }

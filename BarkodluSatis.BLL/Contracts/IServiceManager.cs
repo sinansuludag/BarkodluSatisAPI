@@ -10,5 +10,6 @@ namespace BarkodluSatis.BLL.Contracts
     {
         IBarkodService BarkodService { get; }  
         IHizliUrunService HizliUrunService { get; }
+        IIslemService IslemService { get; }
     }
 }

@@ -2,6 +2,7 @@
 using BarkodluSatis.DLL.BarkodDBObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace BarkodluSatis.API.Controllers
 {
@@ -55,7 +56,7 @@ namespace BarkodluSatis.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest($"Hata: {ex.Message}");
+                return BadRequest($"Failed to add {ex.Message}");
             }
 
         }
@@ -68,11 +69,11 @@ namespace BarkodluSatis.API.Controllers
                 if (hizliUrun is null)
                     return BadRequest();//400
                 await _serviceManager.HizliUrunService.UpdateOneHizliUrunAsync(id, hizliUrun);
-                return NoContent(); //204
+                return StatusCode(201, hizliUrun);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest($"Failed to update {ex.Message}");
             }
         }
 
@@ -86,7 +87,7 @@ namespace BarkodluSatis.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                return BadRequest($"Failed to delete {ex.Message}");
             }
         }
     }

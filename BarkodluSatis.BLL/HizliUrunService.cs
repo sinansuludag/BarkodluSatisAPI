@@ -23,7 +23,7 @@ namespace BarkodluSatis.BLL
             if (hizliUrun is null)
                 throw new ArgumentNullException(nameof(hizliUrun));
 
-            _repositoryManager.HizliUrun.AddAsync(hizliUrun);
+            await _repositoryManager.HizliUrun.AddAsync(hizliUrun);
             await _repositoryManager.SaveAsync();
             return hizliUrun;
         }
@@ -33,7 +33,7 @@ namespace BarkodluSatis.BLL
             var entity = await _repositoryManager.HizliUrun.GetByIdAsync(id);
             if (entity is null)
                 throw new Exception($"HizliUrun with id:{id} could not found.");
-            _repositoryManager.HizliUrun.DeleteAsync(entity);
+            await _repositoryManager.HizliUrun.DeleteAsync(entity);
             await _repositoryManager.SaveAsync();
             
         }
@@ -49,7 +49,7 @@ namespace BarkodluSatis.BLL
             return await _repositoryManager.HizliUrun.GetByIdAsync(id);
         }
 
-        public async Task UpdateOneHizliUrunAsync(int id, HizliUrun hizliUrun)
+        public async Task<HizliUrun> UpdateOneHizliUrunAsync(int id, HizliUrun hizliUrun)
         {
             var entity = await _repositoryManager.HizliUrun.GetByIdAsync(id);
             if (entity is null)
@@ -62,8 +62,9 @@ namespace BarkodluSatis.BLL
             entity.UrunAd= hizliUrun.UrunAd;
             entity.Fiyat = hizliUrun.Fiyat;
 
-            _repositoryManager.HizliUrun.UpdateAsync(entity);
+            await _repositoryManager.HizliUrun.UpdateAsync(entity);
             await _repositoryManager.SaveAsync();
+            return entity;
            
         }
     }
