@@ -11,6 +11,7 @@ namespace BarkodluSatis.DLL.Contracts
         IBarkodRepository Barkod { get;}
         IHizliUrunRepository HizliUrun { get;}
         IIslemRepository Islem { get;}
+        IIslemOzetRepository IslemOzet { get;}
         Task SaveAsync();
     }
 }

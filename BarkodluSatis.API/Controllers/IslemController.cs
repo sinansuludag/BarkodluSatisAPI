@@ -26,7 +26,7 @@ namespace BarkodluSatis.API.Controllers
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                return BadRequest($"Failed to getAll: {ex.Message}");
             }
         }
 
