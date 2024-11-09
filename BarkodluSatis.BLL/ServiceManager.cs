@@ -15,12 +15,14 @@ namespace BarkodluSatis.BLL
         private readonly Lazy<IHizliUrunService> _hizliUrunService;
         private readonly Lazy<IIslemService> _islemService;
         private readonly Lazy<IIslemOzetService> _islemOzetService;
+        private readonly Lazy<IKullaniciService> _kullaniciService;
         public ServiceManager(IRepositoryManager repositoryManager)
         {
             _barkodService = new Lazy<IBarkodService>(()=>new BarkodService(repositoryManager));
             _hizliUrunService = new Lazy<IHizliUrunService>(()=>new HizliUrunService(repositoryManager));
             _islemService = new Lazy<IIslemService>(()=>new IslemService(repositoryManager));
             _islemOzetService = new Lazy<IIslemOzetService>(() => new IslemOzetService(repositoryManager));
+            _kullaniciService = new Lazy<IKullaniciService>(()=>new KullaniciService(repositoryManager));
         }
 
         public IBarkodService BarkodService => _barkodService.Value;
@@ -30,5 +32,7 @@ namespace BarkodluSatis.BLL
         public IIslemService IslemService => _islemService.Value;
 
         public IIslemOzetService IslemOzetService => _islemOzetService.Value;
+
+        public IKullaniciService KullaniciService => _kullaniciService.Value;
     }
 }
