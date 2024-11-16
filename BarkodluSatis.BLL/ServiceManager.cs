@@ -18,6 +18,7 @@ namespace BarkodluSatis.BLL
         private readonly Lazy<IKullaniciService> _kullaniciService;
         private readonly Lazy<ISabitService> _sabitService;
         private readonly Lazy<ISatisService> _satisService;
+        private readonly Lazy<IStokHareketService> _stokHareketService;
         public ServiceManager(IRepositoryManager repositoryManager)
         {
             _barkodService = new Lazy<IBarkodService>(()=>new BarkodService(repositoryManager));
@@ -27,6 +28,7 @@ namespace BarkodluSatis.BLL
             _kullaniciService = new Lazy<IKullaniciService>(()=>new KullaniciService(repositoryManager));
             _sabitService=new Lazy<ISabitService>(()=>new SabitService(repositoryManager));
             _satisService=new Lazy<ISatisService>(()=>new SatisService(repositoryManager));
+            _stokHareketService = new Lazy<IStokHareketService>(()=>new StokHareketService(repositoryManager));
         }
 
         public IBarkodService BarkodService => _barkodService.Value;
@@ -42,5 +44,7 @@ namespace BarkodluSatis.BLL
         public ISabitService SabitService => _sabitService.Value;
 
         public ISatisService SatisService => _satisService.Value;
+
+        public IStokHareketService StokHareketService => _stokHareketService.Value;
     }
 }

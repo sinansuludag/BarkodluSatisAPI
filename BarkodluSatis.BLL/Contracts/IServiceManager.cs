@@ -15,5 +15,6 @@ namespace BarkodluSatis.BLL.Contracts
         IKullaniciService KullaniciService { get; }
         ISabitService SabitService { get; }
         ISatisService SatisService { get; }
+        IStokHareketService StokHareketService { get; }
     }
 }
