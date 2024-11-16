@@ -35,13 +35,18 @@ namespace BarkodluSatis.API.Controllers
         public async Task<IActionResult> GetOneHizliUrunAsync([FromRoute(Name = "id")] int id)
         {
 
-            var hizliUrun = await _serviceManager
-            .HizliUrunService
-            .GetOneHizliUrunByIdAsync(id);
-            if (hizliUrun is null)
-                return NotFound();
+            try
+            {
+                var hizliUrun = await _serviceManager.SabitService.GetOneSabitAsync(id);
+                if (hizliUrun is null)
+                    return NotFound();
+                return Ok(hizliUrun);
 
-            return Ok(hizliUrun);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Failed to get: {ex.Message}");
+            }
         }
 
         [HttpPost]
@@ -62,7 +67,7 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateOneHizliUrun([FromRoute(Name = "id")] int id, [FromBody] HizliUrun hizliUrun)
+        public async Task<IActionResult> UpdateOneHizliUrunAsync([FromRoute(Name = "id")] int id, [FromBody] HizliUrun hizliUrun)
         {
             try
             {
@@ -78,7 +83,7 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteOneHizliUrun([FromRoute(Name = "id")] int id)
+        public async Task<IActionResult> DeleteOneHizliUrunAsync([FromRoute(Name = "id")] int id)
         {
             try
             {

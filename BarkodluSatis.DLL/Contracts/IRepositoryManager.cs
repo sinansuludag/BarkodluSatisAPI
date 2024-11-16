@@ -14,6 +14,7 @@ namespace BarkodluSatis.DLL.Contracts
         IIslemOzetRepository IslemOzet { get;}
         IKullaniciRepository Kullanici { get;}
         ISabitRepository Sabit { get;}
+        ISatisRepository Satis { get;}
         Task SaveAsync();
     }
 }

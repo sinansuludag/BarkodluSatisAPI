@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BarkodluSatis.API.Migrations
 {
-    [DbContext(typeof(BarkodContextDB))]
+
     [Migration("20241101172846_init")]
     partial class init
     {

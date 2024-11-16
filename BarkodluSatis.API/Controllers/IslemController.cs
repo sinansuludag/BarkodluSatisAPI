@@ -33,11 +33,18 @@ namespace BarkodluSatis.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneIslemAsync([FromRoute(Name ="id")] int id)
         {
-            var islem=await _serviceManager.IslemService.GetOneIslemByIdAsync(id);
+            try
+            {
+                var islem = await _serviceManager.IslemService.GetOneIslemByIdAsync(id);
+                if (islem is null)
+                    return NotFound();
+                return Ok(islem);
 
-            if(islem is null)
-                return NotFound();
-            return Ok(islem);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Failed to get: {ex.Message}");
+            }
         }
 
         [HttpPost]

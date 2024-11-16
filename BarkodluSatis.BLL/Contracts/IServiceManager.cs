@@ -14,5 +14,6 @@ namespace BarkodluSatis.BLL.Contracts
         IIslemOzetService IslemOzetService { get; }
         IKullaniciService KullaniciService { get; }
         ISabitService SabitService { get; }
+        ISatisService SatisService { get; }
     }
 }

@@ -2,28 +2,27 @@
 using BarkodluSatis.DLL.BarkodDBObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace BarkodluSatis.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BarkodController : ControllerBase
+    public class SatisController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
 
-        public BarkodController(IServiceManager serviceManager)
+        public SatisController(IServiceManager serviceManager)
         {
             _serviceManager = serviceManager;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllBarkodAsync()
+        public async Task<IActionResult> GetAllSatisAsync()
         {
             try
             {
-               var barkods=await _serviceManager.BarkodService.GetAllBarkodAsync();
-                return Ok(barkods);
+                var satis = await _serviceManager.SatisService.GetAllSatisAsync();
+                return Ok(satis);
             }
             catch (Exception ex)
             {
@@ -32,15 +31,15 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetOneBarkodAsync([FromRoute(Name = "id")] int id)
+        public async Task<IActionResult> GetOneSatisAsync([FromRoute(Name = "id")] int id)
         {
 
             try
             {
-                var barkod = await _serviceManager.BarkodService.GetOneBarkodByIdAsync(id);
-                if (barkod is null)
+                var satis = await _serviceManager.SatisService.GetOneSatisAsync(id);
+                if (satis is null)
                     return NotFound();
-                return Ok(barkod);
+                return Ok(satis);
 
             }
             catch (Exception ex)
@@ -50,14 +49,14 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddOneBarkodAsync([FromBody] Barkod barkod)
+        public async Task<IActionResult> AddOneSatisAsync([FromBody] Satis satis)
         {
             try
             {
-                if (barkod is null)
+                if (satis is null)
                     return BadRequest();//400
-                await _serviceManager.BarkodService.AddOneBarkodAsync(barkod);
-                return StatusCode(201, barkod);
+                await _serviceManager.SatisService.AddOneSatisAsync(satis);
+                return StatusCode(201, satis);
             }
             catch (Exception ex)
             {
@@ -67,14 +66,14 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateOneBarkodAsync([FromRoute(Name ="id")] int id, [FromBody] Barkod barkod)
+        public async Task<IActionResult> UpdateOneSatisAsync([FromRoute(Name = "id")] int id, [FromBody] Satis satis)
         {
             try
             {
-                if (barkod is null)
+                if (satis is null)
                     return BadRequest();//400
-               await _serviceManager.BarkodService.UpdateOneBarkodAsync(id,barkod);
-                return StatusCode(201, barkod);
+                await _serviceManager.SatisService.UpdateOneSatisAsync(id, satis);
+                return StatusCode(201, satis);
             }
             catch (Exception ex)
             {
@@ -83,11 +82,11 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> DeleteOneBarkodAsync([FromRoute(Name ="id")] int id)
+        public async Task<IActionResult> DeleteOneSatisAsync([FromRoute(Name = "id")] int id)
         {
             try
             {
-               await _serviceManager.BarkodService.DeleteOneBarkodAsync(id);
+                await _serviceManager.SatisService.DeleteOneSatisAsync(id);
                 return NoContent(); //204
             }
             catch (Exception ex)
