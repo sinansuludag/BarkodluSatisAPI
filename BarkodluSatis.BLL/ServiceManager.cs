@@ -20,6 +20,7 @@ namespace BarkodluSatis.BLL
         private readonly Lazy<ISatisService> _satisService;
         private readonly Lazy<IStokHareketService> _stokHareketService;
         private readonly Lazy<ITeraziService> _teraziService;
+        private readonly Lazy<IUrunService> _urunService;
         public ServiceManager(IRepositoryManager repositoryManager)
         {
             _barkodService = new Lazy<IBarkodService>(()=>new BarkodService(repositoryManager));
@@ -31,6 +32,7 @@ namespace BarkodluSatis.BLL
             _satisService=new Lazy<ISatisService>(()=>new SatisService(repositoryManager));
             _stokHareketService = new Lazy<IStokHareketService>(()=>new StokHareketService(repositoryManager));
             _teraziService=new Lazy<ITeraziService>(()=>new TeraziService(repositoryManager));
+            _urunService=new Lazy<IUrunService>(()=>new UrunService(repositoryManager));
         }
 
         public IBarkodService BarkodService => _barkodService.Value;
@@ -50,5 +52,7 @@ namespace BarkodluSatis.BLL
         public IStokHareketService StokHareketService => _stokHareketService.Value;
 
         public ITeraziService TeraziService => _teraziService.Value;
+
+        public IUrunService UrunService => _urunService.Value;
     }
 }

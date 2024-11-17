@@ -17,6 +17,7 @@ namespace BarkodluSatis.DLL.Contracts
         ISatisRepository Satis { get;}
         IStokHareketRepository StokHareket { get;}
         ITeraziRepository Terazi { get;}
+        IUrun Urun { get;}
         Task SaveAsync();
     }
 }

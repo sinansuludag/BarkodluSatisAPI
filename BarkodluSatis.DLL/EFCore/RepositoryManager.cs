@@ -21,6 +21,7 @@ namespace BarkodluSatis.DLL.EFCore
         private readonly Lazy<ISatisRepository> _satisRepository;
         private readonly Lazy<IStokHareketRepository> _stokHareketRepository;
         private readonly Lazy<ITeraziRepository> _teraziRepository;
+        private readonly Lazy<IUrun> _urunRepository;
 
         public RepositoryManager(BarkodContextDB context)
         {
@@ -34,6 +35,7 @@ namespace BarkodluSatis.DLL.EFCore
             _satisRepository=new Lazy<ISatisRepository>(()=>new SatisRepository(_context));
             _stokHareketRepository = new Lazy<IStokHareketRepository>(()=> new StokHareketRepository(_context));
             _teraziRepository=new Lazy<ITeraziRepository>(()=>new TeraziRepository(_context));
+            _urunRepository=new Lazy<IUrun>(()=>new UrunRepository(_context));
         }
 
         public IBarkodRepository Barkod => _barkodRepository.Value;
@@ -53,6 +55,8 @@ namespace BarkodluSatis.DLL.EFCore
         public IStokHareketRepository StokHareket => _stokHareketRepository.Value;
 
         public ITeraziRepository Terazi => _teraziRepository.Value;
+
+        public IUrun Urun => _urunRepository.Value;
 
         public async Task SaveAsync()
         {
