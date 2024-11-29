@@ -17,7 +17,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("BarkodList")]
         public async Task<IActionResult> GetAllBarkodAsync()
         {
             try
@@ -49,7 +49,7 @@ namespace BarkodluSatis.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("BarkodAdd")]
         public async Task<IActionResult> AddOneBarkodAsync([FromBody] Barkod barkod)
         {
             try
@@ -83,6 +83,7 @@ namespace BarkodluSatis.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
+
         public async Task<IActionResult> DeleteOneBarkodAsync([FromRoute(Name ="id")] int id)
         {
             try

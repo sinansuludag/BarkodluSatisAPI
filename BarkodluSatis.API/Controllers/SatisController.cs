@@ -16,7 +16,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("SatisList")]
         public async Task<IActionResult> GetAllSatisAsync()
         {
             try
@@ -48,7 +48,7 @@ namespace BarkodluSatis.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("SatisAdd")]
         public async Task<IActionResult> AddOneSatisAsync([FromBody] Satis satis)
         {
             try

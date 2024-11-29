@@ -16,7 +16,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("TeraziList")]
         public async Task<IActionResult> GetAllTeraziAsync()
         {
             try
@@ -48,7 +48,7 @@ namespace BarkodluSatis.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("TeraziAdd")]
         public async Task<IActionResult> AddOneTeraziAsync([FromBody] Terazi terazi)
         {
             try

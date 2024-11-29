@@ -24,7 +24,7 @@ namespace BarkodluSatis.API.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("SabitList")]
         public async Task<ActionResult> GetAllSabitAsync()
         {
             try
@@ -73,7 +73,7 @@ namespace BarkodluSatis.API.Controllers
                 }
         }
 
-        [HttpPost]
+        [HttpPost("SabitAdd")]
         public async Task<ActionResult> AddOneSabitAsync([FromBody] Sabit sabit)
         {
             try

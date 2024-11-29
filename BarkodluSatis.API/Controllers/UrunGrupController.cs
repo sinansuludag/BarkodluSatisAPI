@@ -16,7 +16,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("UrunGrupList")]
         public async Task<IActionResult> GetAllUrunGrupAsync()
         {
             try
@@ -48,7 +48,7 @@ namespace BarkodluSatis.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("UrunGrupAdd")]
         public async Task<IActionResult> AddOneTUrunGrupAsync([FromBody] UrunGrup urunGrup)
         {
             try

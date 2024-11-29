@@ -16,7 +16,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("IslemOzetList")]
         public async Task<IActionResult> GetAllIslemOzetAsync()
         {
             try
@@ -46,7 +46,7 @@ namespace BarkodluSatis.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("IslemOzetAdd")]
         public async Task<IActionResult> AddOneIslemOzetAsync([FromBody] IslemOzet islemOzet)
         {
             try

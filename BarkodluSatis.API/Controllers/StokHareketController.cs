@@ -16,7 +16,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("StokHareketList")]
         public async Task<IActionResult> GetAllStokHareketAsync()
         {
             try
@@ -48,7 +48,7 @@ namespace BarkodluSatis.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("StokHareketAdd")]
         public async Task<IActionResult> AddOneStokHareketAsync([FromBody] StokHareket stokHareket)
         {
             try

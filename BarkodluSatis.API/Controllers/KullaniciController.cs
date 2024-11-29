@@ -16,7 +16,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("KullaniciList")]
         public async Task<IActionResult> GetAllKullaniciAsync()
         {
             try
@@ -48,7 +48,7 @@ namespace BarkodluSatis.API.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("KullaniciAdd")]
         public async Task<IActionResult> AddOneKullaniciAsync([FromBody] Kullanici kullanici)
         {
             try

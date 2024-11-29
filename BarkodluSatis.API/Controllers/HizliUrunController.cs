@@ -17,7 +17,7 @@ namespace BarkodluSatis.API.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("HizliUrunList")]
         public async Task<IActionResult> GetAllHizliUrunAsync()
         {
             try
@@ -49,7 +49,7 @@ namespace BarkodluSatis.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("HizliUrunAdd")]
         public async Task<IActionResult> AddOneHizliUrunAsync([FromBody] HizliUrun hizliUrun)
         {
             try
