@@ -15,7 +15,7 @@ namespace BarkodluSatis.BLL.EFCore.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(k => k.Id).UseIdentityColumn();
-            builder.Property(k => k.BarkodNo).IsRequired().HasMaxLength(50);
+            builder.Property(k => k.BarkodNo).IsRequired().HasMaxLength(20);
 
         }
     }

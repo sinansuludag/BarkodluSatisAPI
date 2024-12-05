@@ -11,7 +11,7 @@ namespace BarkodluSatis.DLL.BarkodDBObjects
     {
         public int Id { get; set; }
 
-        public string BarkodNo { get; set; }
+        public int BarkodNo { get; set; }
         
 
     }
