@@ -1,6 +1,9 @@
 ﻿using BarkodluSatis.BLL.Contracts;
+using BarkodluSatis.DLL.BarkodDBObjects;
 using BarkodluSatis.DLL.Contracts;
 using BarkodluSatis.DLL.EFCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +25,8 @@ namespace BarkodluSatis.BLL
         private readonly Lazy<ITeraziService> _teraziService;
         private readonly Lazy<IUrunService> _urunService;
         private readonly Lazy<IUrunGrupService> _urunGrupService;
-        public ServiceManager(IRepositoryManager repositoryManager)
+        private readonly Lazy<IAuthenticationService> _authService;
+        public ServiceManager(IRepositoryManager repositoryManager,UserManager<User> userManager,IConfiguration configuration)
         {
             _barkodService = new Lazy<IBarkodService>(()=>new BarkodService(repositoryManager));
             _hizliUrunService = new Lazy<IHizliUrunService>(()=>new HizliUrunService(repositoryManager));
@@ -35,6 +39,7 @@ namespace BarkodluSatis.BLL
             _teraziService=new Lazy<ITeraziService>(()=>new TeraziService(repositoryManager));
             _urunService=new Lazy<IUrunService>(()=>new UrunService(repositoryManager));
             _urunGrupService = new Lazy<IUrunGrupService>(()=>new UrunGrupService(repositoryManager));
+            _authService=new Lazy<IAuthenticationService>(()=>new AuthenticationService(userManager,configuration));
         }
 
         public IBarkodService BarkodService => _barkodService.Value;
@@ -58,5 +63,7 @@ namespace BarkodluSatis.BLL
         public IUrunService UrunService => _urunService.Value;
 
         public IUrunGrupService UrunGrupService => _urunGrupService.Value;
+
+        public IAuthenticationService AuthenticationService => _authService.Value;
     }
 }

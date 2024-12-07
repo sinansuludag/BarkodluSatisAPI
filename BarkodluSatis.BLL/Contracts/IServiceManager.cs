@@ -19,5 +19,6 @@ namespace BarkodluSatis.BLL.Contracts
         ITeraziService TeraziService { get; }
         IUrunService UrunService { get; }
         IUrunGrupService UrunGrupService { get; }
+        IAuthenticationService AuthenticationService { get; }
     }
 }

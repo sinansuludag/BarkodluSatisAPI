@@ -1,4 +1,5 @@
 ﻿using BarkodluSatis.DLL.BarkodDBObjects;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BarkodluSatis.BLL.EFCore
 {
-    public class BarkodContextDB : DbContext
+    public class BarkodContextDB : IdentityDbContext<User>
     {
         public BarkodContextDB()
         {
@@ -47,6 +48,7 @@ namespace BarkodluSatis.BLL.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             // IEntityTypeConfiguration Implement olan bütün classları görecektir
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             /*1.Adım=> Tablo yap
