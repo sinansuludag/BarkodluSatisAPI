@@ -5,6 +5,7 @@ using BarkodluSatis.DLL.BarkodDBObjects;
 using BarkodluSatis.DLL.Contracts;
 using BarkodluSatis.DLL.EFCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 namespace BarkodluSatis.API.Extensions
 {
@@ -28,7 +29,10 @@ namespace BarkodluSatis.API.Extensions
                 opt.Password.RequireLowercase = true;
                 opt.Password.RequireUppercase = true;
                 opt.Password.RequiredLength = 6;
+                opt.Password.RequireNonAlphanumeric = false;
                 opt.User.RequireUniqueEmail = true;
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@_";
+
 
             }
             ).AddEntityFrameworkStores<BarkodContextDB>()

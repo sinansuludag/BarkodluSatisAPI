@@ -13,10 +13,6 @@ namespace BarkodluSatis.BLL.EFCore
 {
     public class BarkodContextDB : IdentityDbContext<User>
     {
-        public BarkodContextDB()
-        {
-
-        }
 
         public BarkodContextDB(DbContextOptions<BarkodContextDB> options) : base(options)
         {

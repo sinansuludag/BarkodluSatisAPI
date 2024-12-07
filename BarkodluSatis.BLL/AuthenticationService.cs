@@ -24,8 +24,13 @@ namespace BarkodluSatis.BLL
         public async Task<IdentityResult> RegisterUser(User user)
         {
             var result= await _userManager.CreateAsync(user,user.Password);
-
-           return result;
+            if (!result.Succeeded)
+            {
+                // Hata mesajlarını loglayabilirsiniz
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                throw new Exception($"User registration failed: {errors}");
+            }
+            return result;
         }
     }
 }
